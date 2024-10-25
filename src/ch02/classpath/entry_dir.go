@@ -6,7 +6,7 @@ import (
 )
 
 type DirEntry struct {
-	//绝对路径 go 结构体不需要显示实现接口，只要方法匹配即可。go没有专门的构造函数
+	//文件目录 go 结构体不需要显示实现接口，只要方法匹配即可。go没有专门的构造函数
 	absDir string
 }
 

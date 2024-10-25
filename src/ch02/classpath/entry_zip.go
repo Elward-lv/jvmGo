@@ -2,12 +2,13 @@ package classpath
 
 import (
 	"archive/zip"
+	"errors"
 	"io/ioutil"
 	"path/filepath"
 )
 
 type ZipEntry struct {
-	//相对路径
+	//相对路径 压缩文件
 	absPath string
 }
 
@@ -39,6 +40,7 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 			return data, self, nil
 		}
 	}
+	return nil, nil, errors.New("class not found :" + className)
 }
 
 func (self *ZipEntry) String() string {

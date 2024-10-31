@@ -2,6 +2,7 @@ package classpath
 
 import (
 	"archive/zip"
+	"errors"
 	"io/ioutil"
 	"path/filepath"
 )
@@ -26,6 +27,9 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 	}
 	defer r.Close()
 	for _, f := range r.File {
+		//if strings.Contains(f.Name, "java/lang/Object") {
+		//	fmt.Printf("like: %v", f.Name)
+		//}
 		if f.Name == className {
 			rc, err := f.Open()
 			if err != nil {
@@ -39,8 +43,7 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 			return data, self, nil
 		}
 	}
-	return nil, nil, nil
-	//errors.New("class not found :" + className)
+	return nil, nil, errors.New("class not found :" + className)
 }
 
 func (self *ZipEntry) String() string {

@@ -62,7 +62,7 @@ func newConstantInfo(tag uint8, cp ConstantPool) ConstantInfo {
 	case CONSTANT_MethodType:
 		return &ConstantMethodTypeInfo{}
 	case CONSTANT_MethodHandler:
-		return &ConstantMethodHandlerInfo{}
+		return &ConstantMethodHandleInfo{}
 	case CONSTANT_InvokeDynamic:
 		return &ConstantInvokeDynamicInfo{}
 	default:

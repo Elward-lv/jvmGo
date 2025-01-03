@@ -18,3 +18,16 @@ func (self *ConstantMemberrefInfo) ClassName() string {
 func (self *ConstantMemberrefInfo) NameANdDescriptor() (string, string) {
 	return self.cp.getNameAndType(self.classIndex)
 }
+
+// =================通过结构体嵌套模拟继承 ==============
+type ConstantFieldrefInfo struct {
+	ConstantMemberrefInfo
+}
+
+type ConstantMethodrefInfo struct {
+	ConstantMemberrefInfo
+}
+
+type ConstantInterfaceMethodrefInfo struct {
+	ConstantMemberrefInfo
+}
